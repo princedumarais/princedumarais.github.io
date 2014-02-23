@@ -1,5 +1,6 @@
 /* Reset CSS */
-body {
+body,
+ul {
 	margin: 0;
 	padding: 0;
 }
@@ -14,13 +15,6 @@ a {
 
 /* Load some fonts (http://paulirish.com/2009/bulletproof-font-face-implementation-syntax/) */
 @font-face {
-	/* TODO: add eof and woff format ? */
-	font-family: 'commersial_script';
-	src: url("font/commersial_script.ttf");
-}
-
-
-@font-face {
 	font-family: 'MuseoSans-300';
 	src: url('font/MuseoSans-300.eot?') format('eot'),
 		 url('font/MuseoSans-300.woff') format('woff'),
@@ -28,95 +22,102 @@ a {
 }
 
 /* Prince du marais */
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+	position: relative; /* to have the same offsetParent in Firefox and IE */
+}
+
 body {
 	font-family: MuseoSans-300, arial;
 	font-size: 100%;
-	line-height: 1.5;
-	text-align: center;
-}
-
-#logo {
-	margin-top: 7em;
-	height: 200px;
-}
-
-h1 {
-	font-size: 1.25em;
-	color: #9999ff;
-	margin: 1em 0;
-	letter-spacing: 1px;
-}
-
-h2 {
-	font-family: commersial_script, MuseoSans-300, arial;
-	margin-top: 2em;
 	color: #472200;
-	font-size: 3em;
-	font-weight: normal;
-}
-
-p {
-	max-width: 30em;
-	color: #9999ff;
-	margin: 2em auto;
-	letter-spacing: 1px;
-}
-
-div.section {
-	padding: 1em 0;
-	min-height: 100%;
 }
 
 #nav {
-	text-align: left;
-	width: 100%;
 	position: fixed;
-	background-color: #9999ff;
-	opacity: .75;
+	top: 0;
+	width: 100%;
+	height: 40px;
+	text-align: center;
+	background-color: white;
+	opacity: .9;
+}
+
+#nav ul {
+	display: inline-block;
+	line-height: 40px;
+	font-size: .8em;
+}
+
+#logo-nav {
+	display: block;
+	height: 100%;
+	width: 20px;
+	background: transparent url(images/logo-nav.png) no-repeat 0 center;
+}
+
+#nav li {
+	float: left;
+	display: inline;
 }
 
 #nav a {
+	margin-left: 1.5em;
+	color: #472200;
+}
+
+#brand {
+	text-align: center;
+	margin: 4em 0;
+}
+
+#brand h1 {
+	font-size: 1.25em;
+	letter-spacing: 2px;
+}
+
+#brand-claim {
+	color: #aaa;
+	font-size: .5em;
+	letter-spacing: 2px;
+}
+
+div.section {
+	padding: 0 2em;
+}
+
+div.section > div {
+	width: 33.3%;
 	float: left;
-	line-height: 3em;
-	margin-left: 1em;
-	color: white;
-	font-size: 70%;
-	vertical-align: middle;
+	text-align: center;
 }
 
-#organic-silk {
-	background-color: #9999ff;
+h2 {
+	color: #e5e5e5;
+	border-bottom: 1px dashed #e5e5e5;
+	margin: 2em 0;
 }
 
-#organic-silk p,
-#organic-silk h2,
-#virgin-wool p,
-#virgin-wool h2 {
-	color: white;
+p {
+	margin: 2em auto;
 }
 
-/* backgrounds images */
-#virgin-wool {
-	background-image: url(images/wool-600.png?v=0);
-}
-
-#organic {
-	background-image: url(images/woolwhite.jpg?v=0);
-}
-
-#organic,
-#virgin-wool {
-	background-attachment: fixed;
-	background-repeat: no-repeat;
-	background-position: center center;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
+img.product-img {
+	height: 300px;
 }
 
 #french-design {
+	height: 650px;
 	background-image: url(images/french-design-600.png?v=0);
+	background-attachment: fixed;
 	background-repeat: no-repeat;
-	background-position: center bottom;
+	background-position: bottom center;
+}
+
+#french-design p {
+	text-align: center;
 }
