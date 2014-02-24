@@ -34,7 +34,7 @@ a {
 body {
 	font-family: MuseoSans-300, arial;
 	font-size: 100%;
-	color: #472200;
+	color: #534027;
 }
 
 #nav {
@@ -42,9 +42,7 @@ body {
 	top: 0;
 	width: 100%;
 	height: 40px;
-	text-align: center;
-	background-color: white;
-	opacity: .9;
+	text-align: left;
 }
 
 #nav ul {
@@ -70,12 +68,12 @@ body {
 	color: #472200;
 }
 
-#brand {
+div.brand {
 	text-align: center;
 	margin: 4em 0;
 }
 
-#brand h1 {
+div.brand .brand-name {
 	font-size: 1.25em;
 	letter-spacing: 2px;
 }
@@ -86,38 +84,75 @@ body {
 	letter-spacing: 2px;
 }
 
-div.section {
-	padding: 0 2em;
-}
-
-div.section > div {
-	width: 33.3%;
-	float: left;
-	text-align: center;
-}
 
 h2 {
 	color: #e5e5e5;
-	border-bottom: 1px dashed #e5e5e5;
 	margin: 2em 0;
+	text-align: center;
+	letter-spacing: 1px;
 }
 
 p {
 	margin: 2em auto;
 }
 
-img.product-img {
-	height: 300px;
+#purist {
+	height: 500px;
+	padding: 0 2em;
 }
 
-#french-design {
-	height: 650px;
-	background-image: url(images/french-design-600.png?v=0);
+#purist div {
+	height: 100%;
+	width: 33.3%;
+	float: left;
+	text-align: center;
+}
+
+#purist {
+	background: transparent url(images/body-silk.jpg?v=0) left 0 no-repeat;
+}
+
+#bady-silk-drawing {
+	background: transparent url(images/silkbaby.png?v=0) center center no-repeat;
+}
+
+#purist p,
+#blanket p {
+	padding-top: 150px;
+	font-size: 1.25em;
+	text-align: center;
+	line-height: 2em;
+	letter-spacing: 1px;
+}
+
+#blanket div {
+	float: right;
+	margin-right: 2em;
+	text-align: center;
+}
+
+#blanket {
+	width: 100%;
+	height: 800px;
+	background-image: url(images/blue-blanket.jpg?v=0);
 	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: bottom center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+#our-story {
+	height: 1120px;
+	background-image: url(images/french-design-600.png?v=0);
 	background-repeat: no-repeat;
 	background-position: bottom center;
 }
 
-#french-design p {
-	text-align: center;
+#our-story p {
+	width: 25em;
+	letter-spacing: 1px;
+	text-align: justify;
 }
