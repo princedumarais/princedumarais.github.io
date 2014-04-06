@@ -144,15 +144,13 @@ p {
 	background-size: cover;
 }
 
-#our-story {
-	height: 1120px;
-	background-image: url(images/french-design-600.png?v=0);
-	background-repeat: no-repeat;
-	background-position: bottom center;
-}
-
 #our-story p {
 	width: 25em;
 	letter-spacing: 1px;
 	text-align: justify;
+}
+
+#copyright {
+	margin-top: 10em;
+	text-align: center;
 }
