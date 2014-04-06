@@ -1,0 +1,64 @@
+- hosts: all
+  sudo: yes
+  gather_facts: yes
+
+  vars:
+    - name: princedumarais
+    - domain: localhost:8080
+    - prestashop_version: 1.6.0.5
+    - root_dir: /vagrant
+    - prestashop_dir: /vagrant/prestashop
+
+  tasks:
+    - name: Resynchronize APT index files
+      command: apt-get update -qy
+
+    # Prestashop install
+    - name: Install APT packages
+      apt: pkg={{item}} state=present
+      with_items:
+        - unzip
+        - mysql-server
+        - libapache2-mod-php5
+        - php5
+        - php5-mcrypt
+        - php5-mysql
+        - php5-gd
+        - apache2
+
+    - name: Download Prestashop
+      get_url: url=http://www.prestashop.com/download/prestashop_{{prestashop_version}}.zip dest=/tmp
+
+    - name: Unzip Prestashop
+      command: chdir=/tmp unzip -d /vagrant -o prestashop_{{prestashop_version}}.zip
+
+    - name: Setup Prestashop
+      command: |
+        chdir={{prestashop_dir}}/install sudo php index_cli.php
+        --name={{name}}
+        --domain={{domain}}
+        --db_user=root
+        --db_password=
+        --db_name={{name}}
+        --db_create=1
+        --firstname=Benoit
+        --lastname=Hirbec
+        --password=password
+        --email=benoit.hirbec@gmail.com
+        --country=fr
+
+    - name: Remove install dir
+      command: rm -r {{prestashop_dir}}/install
+
+    # TODO: check security about user permissions...
+    # - name: Setup www-data user
+    #   command: sudo chown -R :www-data {{prestashop_dir}} # is it usefull cause it works without it ?
+
+    - name: Symlink prestashop theme
+      command: ln -s {{root_dir}}/theme {{prestashop_dir}}/themes/pdm
+
+    - name: Create apache configuration
+      template: src=apache.cfg dest=/etc/apache2/sites-enabled/{{name}}.cfg
+
+    - name: Reload Apache
+      command: sudo /etc/init.d/apache2 reload
