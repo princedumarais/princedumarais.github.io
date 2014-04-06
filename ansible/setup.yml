@@ -62,3 +62,18 @@
 
     - name: Reload Apache
       command: sudo /etc/init.d/apache2 reload
+
+      # flask webserver
+    - name: Install Pip
+      apt: pkg={{item}} state=present
+      with_items:
+        - python-pip
+
+    - name: Install Jinja
+      command: sudo pip install jinja
+
+    - name: Install Flask
+      command: sudo pip install flask
+
+    - name: Copy upstart configuration
+      copy: src=upstart.conf dest=/etc/init/princdedumarais.conf
